@@ -1,6 +1,7 @@
 
 public class Books{
 
+    int bookId;
     String title;
     String author;
     Boolean isavailable;
@@ -8,7 +9,7 @@ public class Books{
     String genre;
     String minutesBorrowedFromLibrary;
 
-    Books(String title, String author, Boolean isavailable, String whoBorrowed, String genre, String minutesBorrowedFromLibrary){
+    Books(int bookId,String title, String author, Boolean isavailable, String whoBorrowed, String genre, String minutesBorrowedFromLibrary){
         
         this.title = title;
         this.author = author;
@@ -16,8 +17,10 @@ public class Books{
         this.whoBorrowed = whoBorrowed;
         this.genre = genre;
         this.minutesBorrowedFromLibrary = minutesBorrowedFromLibrary;
+        this.bookId = bookId;
     }
     void bookInfo(){
+        System.out.println("Book ID: " + bookId);
         System.out.println("Book title: " + title);
         System.out.println("Author: " + author);
         System.out.println("In the Library? " + isavailable);
