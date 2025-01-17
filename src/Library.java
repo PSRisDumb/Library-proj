@@ -2,7 +2,8 @@
 import java.util.Scanner;
 
 public class Library {
-    
+    private static Scanner bookScanner = new Scanner(System.in);
+    private static int choice = 0;
     public static void main(String[] args){
         boolean leave = false;
         
@@ -69,8 +70,8 @@ public class Library {
                 ,"Mythology"
                 ,"12960")
             };
-
-        try (Scanner bookScanner = new Scanner(System.in)) {
+    
+        
             System.out.println("Input your username: ");
             String user = bookScanner.nextLine();
 
@@ -82,7 +83,7 @@ public class Library {
                 System.out.println("1. Checkout a Book");
                 System.out.println("2. Return a Book");
                 System.out.println("3. Exit");
-                int choice = Integer.parseInt(bookScanner.nextLine());
+                choice = Integer.parseInt(bookScanner.nextLine());
                 if (choice == 1){
                     int booksavailable = 0;
                     System.out.println("Search or scroll through available?");
@@ -113,10 +114,7 @@ public class Library {
                         for (Books i : books){
                             
                             if (i.bookId == bookpos && booksavailable > 0){
-                                System.out.println("Do you want to check out the book?");
-                                System.out.println("1. Yes");
-                                System.out.println("2. No");
-                                choice = Integer.parseInt(bookScanner.nextLine());
+                                checkoutBook();
                                 if (choice == 1 && i.isavailable == true){
                                     i.isavailable = false;
                                     i.whoBorrowed = user;
@@ -136,10 +134,7 @@ public class Library {
                         for (Books i : books){
                             
                             if (i.bookId == bookpos){
-                                System.out.println("Do you want to check out the book?");
-                                System.out.println("1. Yes");
-                                System.out.println("2. No");
-                                choice = Integer.parseInt(bookScanner.nextLine());
+                                checkoutBook();
                                 
                                 if (choice == 1 && i.isavailable == true){
                                     i.isavailable = false;
@@ -168,7 +163,7 @@ public class Library {
                         System.out.println("You have no books borrowed!");
                         System.out.println("Sending you back to the main menu.");
                     }
-                                      
+                    
                     if(booksavailable >0){
                         System.out.println("Which book would you like to return? (Type in the Book ID that you'd like to return, or type out -1 to leave.)");
                         int bookPos = Integer.parseInt(bookScanner.nextLine());
@@ -196,9 +191,14 @@ public class Library {
                     System.out.println("Have a good day!");
                     leave = true;
                 }
-        }
+            }
         
-    }
 
-}
+    }
+    private static void checkoutBook(){
+        System.out.println("Do you want to check out the book?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        choice = Integer.parseInt(bookScanner.nextLine());
+    }
 }
