@@ -32,4 +32,8 @@ public class Books{
             System.out.println("The book has been borrowed for " + minutesBorrowedFromLibrary + " minutes.");
         };
     }
+
+    void printShortInfo(){
+        System.out.println("Book ID: " + bookId +". Title: " + title);
+    }
 }
